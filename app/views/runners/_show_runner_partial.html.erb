@@ -1,19 +1,27 @@
 <tr>
-  <td><%= runner.name %></td>
+  <td><h4><%= runner.name %></h4></td>
   <td>
-    <div class="left"> <%= runner.short %>    </div>
-    <div class="right"><%= form_tag(runner, method: "patch") do %>
-      <%= hidden_field_tag("runner[short]", "#{(runner.short+1)}") %>
-      <%= submit_tag("+") %>
-    <% end %>
+    <div class="valign-wrapper">
+      <div class="inline valign"> <h3 class=""><%= runner.short %></h3></div>
+      <div class="right inline half-button"><%= form_tag(runner, method: "patch") do %>
+        <%= hidden_field_tag("runner[short]", "#{(runner.short+1)}") %>
+        <%= button_tag(type: "submit", class: "light-blue darken-4 waves-effect waves-light btn") do %>
+            <i class="material-icons">arrow_upward</i>
+        <% end %>
+      <% end %>
+      </div>
     </div>
   </td>
   <td>
-    <div class="left-align"> <%= runner.long %></div>
-    <div class="center-align"><%= form_tag(runner, method: "patch") do %>
+    <div class="valign-wrapper">
+      <div class="inline valign"> <h3><%= runner.long %></h3></div>
+      <div class="inline half-button"><%= form_tag(runner, method: "patch") do %>
         <%= hidden_field_tag("runner[long]", "#{(runner.long+1)}") %>
-        <%= submit_tag("+") %>
-    <% end %>
+          <%= button_tag(type: "submit", class: "light-blue darken-4 waves-effect waves-light btn") do %>
+          <i class="material-icons">arrow_upward</i>
+        <% end %>
+      <% end %>
+      </div>
     </div>
   </td>
 </tr>
