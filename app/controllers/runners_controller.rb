@@ -28,7 +28,7 @@ class RunnersController < ApplicationController
 
     respond_to do |format|
       if @runner.save
-        format.html { redirect_to runners_url, notice: 'Runner was successfully created.' }
+        format.html { redirect_to runners_url}
         format.json { render :show, status: :created, location: @runner }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class RunnersController < ApplicationController
     puts params
     respond_to do |format|
       if @runner.update(runner_params)
-        format.html { redirect_to runners_url, notice: 'Runner was successfully updated.' }
+        format.html { redirect_to runners_url}
         format.json { render :show, status: :ok, location: @runner }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class RunnersController < ApplicationController
   def destroy
     @runner.destroy
     respond_to do |format|
-      format.html { redirect_to runners_url, notice: 'Runner was successfully destroyed.' }
+      format.html { redirect_to runners_url}
       format.json { head :no_content }
     end
   end
