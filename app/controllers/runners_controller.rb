@@ -4,7 +4,7 @@ class RunnersController < ApplicationController
   # GET /runners
   # GET /runners.json
   def index
-    @runners = Runner.all
+    @runners = Runner.order(:id)
   end
 
   # GET /runners/1
@@ -28,7 +28,7 @@ class RunnersController < ApplicationController
 
     respond_to do |format|
       if @runner.save
-        format.html { redirect_to @runner, notice: 'Runner was successfully created.' }
+        format.html { redirect_to runners_url, notice: 'Runner was successfully created.' }
         format.json { render :show, status: :created, location: @runner }
       else
         format.html { render :new }
@@ -40,9 +40,10 @@ class RunnersController < ApplicationController
   # PATCH/PUT /runners/1
   # PATCH/PUT /runners/1.json
   def update
+    puts params
     respond_to do |format|
       if @runner.update(runner_params)
-        format.html { redirect_to @runner, notice: 'Runner was successfully updated.' }
+        format.html { redirect_to runners_url, notice: 'Runner was successfully updated.' }
         format.json { render :show, status: :ok, location: @runner }
       else
         format.html { render :edit }
@@ -69,6 +70,6 @@ class RunnersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def runner_params
-      params.require(:runner).permit(:name, :short, :long)
+      params.require(:runner).permit(:short, :long, :name)
     end
 end
