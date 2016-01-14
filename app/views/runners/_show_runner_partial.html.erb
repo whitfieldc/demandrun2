@@ -1,20 +1,19 @@
 <tr>
   <td><%= runner.name %></td>
-  <td><%= runner.short %></td>
-  <td><%= runner.long %></td>
-</tr>
-<tr>
-  <td></td>
   <td>
-    <%= form_tag(runner, method: "patch") do %>
-        <%= hidden_field_tag("runner[short]", "#{(runner.short+1)}") %>
-        <%= submit_tag("Increment Short Run Count") %>
+    <div class="left"> <%= runner.short %>    </div>
+    <div class="right"><%= form_tag(runner, method: "patch") do %>
+      <%= hidden_field_tag("runner[short]", "#{(runner.short+1)}") %>
+      <%= submit_tag("+") %>
     <% end %>
+    </div>
   </td>
   <td>
-    <%= form_tag(runner, method: "patch") do %>
+    <div class="left-align"> <%= runner.long %></div>
+    <div class="center-align"><%= form_tag(runner, method: "patch") do %>
         <%= hidden_field_tag("runner[long]", "#{(runner.long+1)}") %>
-        <%= submit_tag("Increment Long Run Count") %>
+        <%= submit_tag("+") %>
     <% end %>
+    </div>
   </td>
 </tr>
